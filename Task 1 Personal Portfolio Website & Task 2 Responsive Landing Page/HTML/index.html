@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahmoud </title>
+
+  <link rel="stylesheet" href="/Style/style.css">
+
+  <!-- Font & Icon -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Gsap Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!--  Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class', // Enable dark mode via class
+      theme: {
+        extend: {
+          fontFamily: {
+            arabic: ['Cairo', 'system-ui'],
+            latin: ['Inter', 'system-ui']
+          },
+          colors: {
+            brand: {
+              50: '#f5fbff',
+              100: '#eaf5ff',
+              200: '#cfe9ff',
+              300: '#a9d6ff',
+              400: '#74bdff',
+              500: '#4aa3ff',
+              600: '#2e86f2',
+              700: '#246ad0',
+              800: '#1f56a8',
+              900: '#1e487f',
+              // Dark mode overrides
+              dark: {
+                50: '#181f2a',
+                100: '#232b3a',
+                200: '#2d3748',
+                300: '#374151',
+                400: '#475569',
+                500: '#64748b',
+                600: '#94a3b8',
+                700: '#cbd5e1',
+                800: '#e2e8f0',
+                900: '#f1f5f9',
+              }
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.08)'
+          }
+        }
+      }
+    }
+  </script>
+
+
+</head>
+
+<body class="font-arabic bg-white  text-slate-800 selection:bg-brand-200 selection:text-slate-900 dark:bg-slate-900 dark:text-slate-100 dark:selection:bg-brand-600 dark:selection:text-white"> 
+  <header id="top" class="fixed top-0 inset-x-0 z-50 backdrop-blur bg-white/30  supports-[backdrop-filter]:bg-white/20 dark:bg-slate-900/40  dark:supports-[backdrop-filter]:bg-slate-900/20 border-0"> 
+    <div class="navbar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-16 flex items-center justify-between">
+        <a href="#top" class="flex items-center gap-2 font-extrabold text-xl tracking-tight">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white">M</span>
+          <span class="text-brand-900 dark:text-blue-400">Mahmoud</span><span>Mohamed</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-[20px]">
+          <a href="#hero" class="hover:text-brand-700 transition dark:hover:text-blue-100">Home</a>
+          <a href="#about" class="hover:text-brand-700 bg transition dark:hover:text-blue-100 ">About</a>
+          <a href="#skills" class="hover:text-brand-700 bg transition dark:hover:text-blue-100 ">Skills</a>
+          <a href="#Projects" class="hover:text-brand-700 transition dark:hover:text-blue-100 ">Projects</a>
+          <a href="#contact" class="hover:text-brand-700 transition dark:hover:text-blue-100 ">Contact</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <a href="" class="btn-cv inline-flex items-center gap-2 hover:text-white dark:text-white rounded-xl px-4 py-2 shadow-soft">
+            My CV 
+            <i data-lucide="download"></i>
+          </a>
+          <button id="darkModeToggle" aria-label="Toggle dark mode" class="inline-flex items-center justify-center h-10 w-10 rounded-xl text-amber-50 bg-slate-900  dark:bg-slate-700 dark:text-yellow-300  transition"> 
+            <svg id="darkModeIcon" xmlns="http://www.w3.org/2000/svg" 
+                  width="24" height="24" viewBox="0 0 24 24" 
+                  fill="none" stroke="currentColor" stroke-width="2" 
+                  stroke-linecap="round" stroke-linejoin="round">
+              </svg> 
+          </button>
+        </div>
+        <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700" aria-label="قائمة">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileNav" class="md:hidden hidden border-t dark:border-0 backdrop-blur bg-white/60 dark:bg-white/10 border-slate-200 ">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-2 text-[20px]">
+          <a href="#hero" class="hover:text-brand-700 transition dark:hover:text-blue-100">Home</a>
+          <a href="#about" class="hover:text-brand-700 transition dark:hover:text-blue-100">About</a>
+          <a href="#skills" class="hover:text-brand-700 transition dark:hover:text-blue-100">Skills</a>
+          <a href="#Projects" class="hover:text-brand-700 transition dark:hover:text-blue-100">Projects</a>
+          <a href="#contact" class="hover:text-brand-700 transition   dark:hover:text-blue-100">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- hero -->
+<section id="hero" class="hero  bg-gradient-to-r from-sky-100 to-blue-50  pt-20 md:pt-24 pb-32 bg-transparent border-b-0 dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-800 dark:text-slate-100"> 
+  <!-- Added dark mode gradient backgrounds -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Left Side -->
+    <div class="hero-section-anmation">
+      <!-- Title -->
+      <h2 class="mt-4 text-4xl md:text-5xl font-extrabold leading-[1.15] ">
+        Hello, I'm 
+        <span class=" flex dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:to-blue-400 dark:from-sky-800
+        text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-sky-800">Mahmoud </span>
+      </h2>
+
+      <!-- Subtitle -->
+      <h5 class="mt-4 text-slate-600 dark:text-slate-100">
+        Full-Stack Developer 
+        <span class="border-l-4 border-blue-700 m-1 rounded"></span>
+        UI/UX Designer
+        <span class="border-l-4 border-blue-700 m-1 rounded"></span>
+        Graphic Designer
+      </h5>
+
+      <!-- Buttons -->
+      <div class="mt-6 flex flex-wrap items-center gap-5">
+        <a href="#contact" 
+          class="btn-primary inline-flex text-[18px] items-center gap-2 rounded-2xl px-5 py-3 bg-brand-600 text-white hover:bg-brand-700 transition shadow-soft">
+          Contact With Me
+          <i data-lucide="arrow-right" class="icon-arrow"></i>
+        </a>
+        <a href="#Projects" 
+          class="btn-secondary inline-flex text-[18px] items-center gap-2 rounded-2xl px-5 py-3 bg-brand-600 text-white hover:bg-brand-700 transition shadow-soft">
+          View My Works
+        </a>
+
+        <div class="mt-8 grid grid-cols-4 gap-3 text-center">
+          <a title="behance" href="https://www.behance.net/mahmoudmhameud" class="social-btn behance"><i class="fab fa-behance"></i></a>
+          <a title="linked-in" href="https://www.linkedin.com/in/mahmoud-mohamed-65b906310/" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+          <a title="git-hub" href="https://github.com/MaHmOuD-255" class="social-btn github"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="relative reveal">
+      <div class="absolute -inset-6 -z-10"></div>
+      <img src="/img/png/image-removebg-preview (1).png" 
+            alt="My Photo" 
+          class="hidden sm:block rounded-lg w-full max-w-sm">
+    </div>
+
+  </div>
+</section>
+
+<!-- about  -->
+  <section id="about" class="about bg-sky-50 dark:bg-slate-900   mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-8 md:gap-16  bg- "> 
+    
+    <div class="md:w-1/2 w-full md:pl-12 text-center md:text-left">
+      <h2 class="text-4xl font-bold border-l-4 border-blue-900 border-r-4 text-center p-2 mb-1">About Me</h2>
+      <h5 class="text-xl text-gray-700 mb-4 dark:text-gray-200 mt-16">
+        Hello! I'm 
+          <span class="relative ">
+            <span class=" absolute -inset-1 block -skew-y-3 bg-blue-200" aria-hidden="true"></span>
+            <span class="relative text-blue-800 font-bold ">Mahmoud </span>
+          </span>
+          <span class="block mt-4">
+            A passionate programmer, designer, and full-stack developer based in Egypt. I specialize in creating beautiful, user-friendly websites and apps that deliver seamless experiences across all devices and provide enjoyable user experiences.        
+          </span>
+          </h5>
+        <div class="container card-parant mx-auto py-4 mt-14">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="card-about  bg-blue-100 dark:bg-gray-800 p-6 rounded-lg">
+                <div class="flex items-center ">
+                  <i data-lucide="code" class="mr-2 dark:bg-blue-100 text-blue-100 dark:text-blue-800 bg-blue-950 rounded p-1 "></i>
+                  <h2 class="text-xl font-bold ">Coding</h2>
+                </div>
+                <p>Building modern and fast web applications</p>
+              </div>
+              <div class="card-about  bg-blue-100 dark:bg-gray-800 p-6 rounded-lg">
+                <div class="flex items-center ">
+                  <i data-lucide="figma" class="mr-2 dark:bg-blue-100 text-blue-100 dark:text-blue-800 bg-blue-950 rounded p-1 "></i>
+                  <h2 class="text-xl font-bold ">UI/UX Design</h2>
+                </div>
+                <p>Desgin modern and fast</p>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    
+
+    <div class="md:w-1/2 w-full flex flex-col md:flex-col items-center gap-8">
+      <img src="/img/png/undraw_programming_65t2-Photoroom.png" alt="My Photo" class="img-about rounded-lg w-full max-w-sm">
+    </div>
+    
+
+
+  </section>
+
+  <!--  experience&Certificates -->
+<section id="Education" class="py-20 bg-gradient-to-r from-blue-100 to-sky-50 dark:bg-gradient-to-l dark:from-slate-900 dark:to-slate-800 dark:text-slate-100"> 
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Title -->
+    <h2 class="title-Education text-4xl font-bold border-l-4 border-blue-900 border-r-4 text-center p-2">Education & Certificates</h2>
+    <div class="timeline-item grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 mt-16 max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+          <!-- Education -->
+        <ol class=" relative grid-cols-1 ">                 
+          <!-- Item -->
+          <li class="mb-12 ms-6">            
+            <span class="absolute flex items-center justify-center w-12 h-12 bg-blue-200 dark:bg-blue-900 rounded-full -start-6 ring-8 ring-white dark:ring-slate-900">
+              <i class="fa-solid fa-building-columns"></i>
+
+            </span>
+            <div class="ml-10">
+              <h3 class="flex items-center mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                New Assiut Technological University
+                <span class="ml-3 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 text-xs font-medium px-2 py-0.5 rounded">
+                  continuous
+                </span>
+              </h3>
+              <time class="block mb-2 text-sm text-gray-500 dark:text-gray-400">
+                Start on September , 2023
+              </time>
+            </div>
+          </li>
+        </ol>
+        <ol class=" relative grid-cols-2 border-s border-gray-900 dark:border-gray-700">                  
+          
+          <!-- Certificates  -->
+          <li class="mb-12 ms-6">            
+            <span class="absolute flex items-center justify-center w-12 h-12 bg-blue-200 dark:bg-blue-900 rounded-full -start-6 ring-8 ring-white dark:ring-slate-900">
+              <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-700 dark:text-blue-300"></i>
+            </span>
+            <div class="ml-10">
+              <h3 class="flex items-center mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                  <span class="text-sky-50 bg-blue-900 dark:text-blue-900 dark:bg-sky-50 mr-2 p-1 ">.NET</span> ITI (Information Technology Institute)
+              </h3>
+              <time class="block mb-2 text-sm text-gray-500 dark:text-gray-400">
+                9/2024-12/2024
+              </time>
+              <button data-cert="/Portfolio/img/craft/354.jpg" class="open-cert flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition">
+                <i data-lucide="eye" class="w-4 h-4"></i> View Certificate
+              </button> 
+            </div>
+          </li>
+          <li class="mb-12 ms-6">            
+            <span class="absolute flex items-center justify-center w-12 h-12 bg-blue-200 dark:bg-blue-900 rounded-full -start-6 ring-8 ring-white dark:ring-slate-900">
+              <i data-lucide="graduation-cap" class="w-6 h-6 text-blue-700 dark:text-blue-300"></i>
+            </span>
+            <div class="ml-10">
+              <h3 class="flex items-center mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                <span class="text-sky-50 bg-blue-900 dark:text-blue-900 dark:bg-sky-50 mr-2 p-1">Web Desgin</span>NTI (National Telecommunication Institute)
+              </h3>
+              <time class="block mb-2 text-sm text-gray-500 dark:text-gray-400">
+                2/2025 - 3/2025
+              </time>
+              <button data-cert="/Portfolio/img/craft/354.jpg" class="open-cert flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition">
+                <i data-lucide="eye" class="w-4 h-4"></i> View Certificate
+              </button> 
+            </div>
+          </li>
+
+
+        </ol>
+    </div>
+
+  </div>
+</section>
+
+  
+<!-- skills -->
+<section id="skills" class="py-20 bg-sky-50 dark:bg-slate-800 dark:text-slate-100">
+    <div class="container  px-6 ">
+    <h2 class="text-3xl sm:text-4xl font-bold  flex items-center gap-3">
+      <span class="border-l-4 border-blue-700 pl-4 ">Skills & Experience </span>
+    </h2>
+      <!-- ---------------------tool bar------------------------ -->
+        <div class="tools-ticker">
+          <div class="tools-track">
+              <!-- Frontend -->
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="tailwind"/>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" alt="Angular" />
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+
+              <!-- Backend / Software -->
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+
+              <!-- Tools -->
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg" alt="VSCode"/>
+          
+          </div>
+        </div>
+        <!-- filter buttons -->
+        <div class="flex justify-center gap-4 mb-12 flex-wrap">
+        <button data-filter="all" 
+          class="filter-btn active px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-200 font-semibold transition">
+          All
+        </button>
+        <button data-filter="languages" class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-200   transition">Languages</button>
+        <button data-filter="frameworks" class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-200  transition">Frameworks</button>
+        <button data-filter="tools" class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-gray-900 text-gray-900 dark:text-gray-200  transition">Tools</button>
+        </div>
+
+      <!-- Skills Grid -->
+      <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+        <!-- Tailwind -->
+        <div class="skill-card  p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Bootstrap" class="w-10 h-10 hover:scale-110 transition">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Tailwind</h3>
+          </div>
+        </div>
+        <!-- .NET -->
+        <div class="skill-card frameworks p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET" class="w-10 h-10 hover:scale-110 transition">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">.NET</h3>
+          </div>
+        </div>
+        <!-- Angular -->
+        <div class="skill-card frameworks p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" alt="React" class="w-10 h-10 hover:scale-110 transition">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Angular</h3>
+          </div>
+        </div>
+        <!-- Figma -->
+        <div class="skill-card tools p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="w-10 h-10 hover:scale-110 transition">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Figma</h3>
+          </div>
+        </div>
+        <!-- ================= Backend / Languages ================= -->
+        <!-- C# -->
+        <div class="skill-card languages p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="w-10 h-10 hover:scale-110 transition">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">C#</h3>
+          </div>
+        </div>
+        <!-- Python -->
+      <div class="skill-card languages p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-10 h-10 hover:scale-110 transition">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Java</h3>
+        </div>
+      </div>
+      <!-- Java -->
+      <div class="skill-card languages p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="w-10 h-10 hover:scale-110 transition">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">C++</h3>
+        </div>
+      </div>
+      <!--   ================= Tools ================= -->
+      <!-- VSCode -->
+      <div class="skill-card tools p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode" class="w-10 h-10 hover:scale-110 transition">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">VSCode</h3>
+        </div>
+      </div>
+      <!-- visualstudio -->
+      <div class="skill-card tools p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg" alt="visualstudio" class="w-10 h-10 hover:scale-110 transition">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Visual Studio</h3>
+        </div>
+      </div>
+      <!-- GitHub -->
+      <div class="skill-card tools p-6 bg-white dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition duration-300">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-10 h-10 hover:scale-110 transition">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">GitHub</h3>
+        </div>
+      </div>
+      </div>
+</section>
+
+<!-- Modal -->
+  <div id="certModal" class="fixed inset-0 p-5 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-2xl w-full relative p-10">
+      <button id="closeModal" class="absolute top-1 p-2 right-2 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:bg-slate-600 dark:hover:text-red hover:bg-red-200 rounded text-2xl">&times;</button>
+      <img id="certImage" src="" alt="Certificate" class="rounded-lg max-h-[80vh] mx-auto shadow-lg">
+    </div>
+  </div>
+
+
+  <!-- Projects -->
+    <section id="Projects" class="py-16 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-gray-900 dark:text-slate-100 transition-all duration-200">
+        <div class="container mx-auto px-6">
+
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+                <div class="reveal">
+                    <h2 class="text-4xl sm:text-5xl font-bold flex items-center gap-4">
+                        <span class="border-l-4 border-blue-700 dark:border-blue-400 pl-4 bg-gradient-to-r from-blue-700 to-purple-700 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                              Projects
+                        </span>
+                    </h2>
+                </div>
+                <div class="reveal flex flex-wrap gap-3">
+                    <button class="filter-btn2 active rounded-full border-2 border-blue-200 dark:border-gray-600 px-6 py-3 text-sm font-semibold bg-white dark:bg-gray-800  dark:hover:bg-gray-700 transition-all duration-300" data-filter="all">
+                        All Projects
+                    </button>
+                    <button class="filter-btn2 rounded-full border-2 border-gray-200 dark:border-gray-600 px-6 py-3 text-sm font-semibold bg-white dark:bg-gray-800  dark:hover:bg-gray-700 transition-all duration-300" data-filter="web">
+                        Web Development
+                    </button>
+                    <button class="filter-btn2 rounded-full border-2 border-gray-200 dark:border-gray-600 px-6 py-3 text-sm font-semibold bg-white dark:bg-gray-800  dark:hover:bg-gray-700 transition-all duration-300" data-filter="Design">
+                        UI/UX Design
+                    </button>
+                </div>
+            </div>
+            <div class="project-grid mt-12" id="projectGrid">
+                <!-- Modern Dashboard -->
+                <div class="project-card show work-card group relative rounded-3xl overflow-hidden border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-lg hover:shadow-2xl dark:shadow-[0_10px_30px_rgba(0,0,0,0.45)] transition-all duration-500" data-cat="web" class=" max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                  <img class="rounded-t-lg" src="/img/project/Dashboard.jpg" alt="" />
+                  <div class="p-5">
+                    <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full">Web Development</span>
+                    <div class="flex items-center justify-between">
+                      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Modern Dashboard</h5>
+                        <a href="https://github.com/MaHmOuD-255" title="git-hub" class="inline-flex items-center px-3 py-2 text-3xl font-medium text-center shadow dark:text-black bg-gray-100 rounded-2xl hover:bg-gray-200 transition">
+                          <i class="fab fa-github"></i>
+                        </a>
+                    </div>  
+                      <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full">HTML</span>
+                      <span class="inline-block mt-2 px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full">CSS</span>
+                      <span class="inline-block mt-2 px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded-full">JavaScript</span>
+                      <span class="inline-block mt-2 px-3 py-1 bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-purple-200 text-xs rounded-full">Tailwind</span>
+                    </div>
+                </div>
+                <!-- Task Managment -->
+                <div class="project-card show work-card group relative rounded-3xl overflow-hidden border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-lg hover:shadow-2xl dark:shadow-[0_10px_30px_rgba(0,0,0,0.45)] transition-all duration-500" data-cat="web" class=" max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                  <img class="rounded-t-lg" src="/img/project/task-managment.jpg" alt="" />
+                  <div class="p-5">
+                    <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full">Web Development</span>
+                    <div class="flex items-center justify-between">
+                      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Task Managment</h5>
+                        <a href="https://github.com/MaHmOuD-255" title="git-hub" class="inline-flex items-center px-3 py-2 text-3xl font-medium text-center shadow dark:text-black bg-gray-100 rounded-2xl hover:bg-gray-200 transition">
+                          <i class="fab fa-github"></i>
+                        </a>
+                    </div> 
+                      <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full">HTML</span>
+                      <span class="inline-block mt-2 px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs rounded-full">CSS</span>
+                      <span class="inline-block mt-2 px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs rounded-full">JavaScript</span>
+                      <span class="inline-block mt-2 px-3 py-1 bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-purple-200 text-xs rounded-full">Tailwind</span>
+                    </div>
+                </div>
+
+                <!-- UI Design -->
+                <div class="project-card show work-card group relative rounded-3xl overflow-hidden border border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-lg hover:shadow-2xl dark:shadow-[0_10px_30px_rgba(0,0,0,0.45)] transition-all duration-500" data-cat="Design" class=" max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                  <img class="rounded-t-lg" src="/img/project/landing.jpg" alt="" />
+                  <div class="p-5">
+                    <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full">UI/UX</span>
+                    <div class="flex items-center justify-between">
+                      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Mobile APP</h5>
+                        <a href="https://www.behance.net/mahmoudmhameud" title="behance" target="_blank" class="inline-flex items-center px-3 py-2 text-3xl font-medium text-center shadow dark:text-blue-600 text-blue-600 bg-gray-100 rounded-2xl hover:bg-gray-200 transition">
+                          <i class="fab fa-behance"></i>
+                        </a>
+                    </div> 
+                        <span class="inline-block mt-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 text-o dark:text-blue-200 text-xs rounded-full">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+  
+
+
+
+
+
+
+  <i id="backToTop" data-lucide="arrow-up" class="fixed bottom-6 right-6 hidden p-2 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition
+  w-10 h-10 cursor-pointer
+  "></i>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-sky-50 dark:bg-slate-800 dark:text-slate-100">
+    <div class="mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-8 flex items-center gap-3">
+        <span class="border-l-4 border-blue-700 pl-4">Contact Me</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-12 bg-gray-100 dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
+        <!-- Contact Methods -->
+        <div class="flex flex-col gap-6 justify-center">
+          <div class="flex items-center gap-4">
+            <span class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
+              <i class="fab fa-linkedin-in text-2xl"></i>
+            </span>
+            <div>
+              <div class="font-semibold">LinkedIn</div>
+              <a href="https://www.linkedin.com/in/mahmoud-mohamed-65b906310/" target="_blank" rel="noopener" class="text-blue-700 dark:text-blue-300 hover:underline">linkedin</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
+              <i class="fab fa-github text-2xl"></i>
+            </span>
+            <div>
+              <div class="font-semibold">GitHub</div>
+              <a href="https://github.com/MaHmOuD-255" target="_blank" rel="noopener" class="text-blue-700 dark:text-blue-300 hover:underline">github</a>
+            </div>
+          </div>
+        </div>
+        <!-- Contact Form -->
+        <form id="contactForm" class="bg-white dark:bg-gray-950 rounded-2xl shadow-md p-8 flex flex-col gap-6" autocomplete="off">
+          <div>
+            <label for="name" class="block font-semibold mb-1">Name</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          </div>
+          <div>
+            <label for="email" class="block font-semibold mb-1">Email</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+          </div>
+          <div>
+            <label for="message" class="block font-semibold mb-1">Message</label>
+            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+          </div>
+          <button type="submit" class="mt-2 px-6 py-3 rounded-xl bg-brand-600 text-white font-semibold hover:bg-brand-700 transition">Send Message</button>
+          <div id="formStatus" class="text-sm mt-2"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 mt-16">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-center gap-4">
+
+      <div class="text-sm text-slate-500 dark:text-slate-400 text-center md:text-right">
+        &copy; <span id="footerYear"></span> Mahmoud Mohamed. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/JS/index.js" ></script>
+</body>
+</html>
